@@ -32,6 +32,7 @@
 #include <stdbool.h>
 
 #include "c_lib.h"
+#include "config.h"
 #include "csync_private.h"
 #include "csync_config.h"
 #include "csync_exclude.h"
@@ -48,6 +49,29 @@
 
 #define CSYNC_LOG_CATEGORY_NAME "csync.api"
 #include "csync_log.h"
+
+#ifndef HAVE_LIBRT
+#define CLOCK_REALTIME 0
+#ifdef WIN32
+    /* OSX has this function, windows does not */
+    static void TIMEVAL_TO_TIMESPEC(const struct timeval *tv,
+                                    struct timespec *ts)
+    {
+        ts->tv_sec = tv->tv_sec;
+        ts->tv_nsec = tv->tv_usec*1000;
+        if (ts->tv_nsec >= 1000000000) ts->tv_nsec -= 1000000000, ++ts->tv_sec;
+    }
+#endif
+    int clock_gettime(int clkid, struct timespec *ts)
+    {
+        struct timeval tv;
+        int ret = gettimeofday(&tv, 0);
+        (void)clkid;
+        TIMEVAL_TO_TIMESPEC(&tv, ts);
+        return ret;
+    }
+#endif
+
 
 static int _key_cmp(const void *key, const void *data) {
   uint64_t a;

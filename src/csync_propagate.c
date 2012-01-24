@@ -35,6 +35,17 @@
 #include "csync_log.h"
 #include "csync_util.h"
 
+#ifndef __unix__
+#define S_IRGRP 0
+#define S_IROTH 0
+#define S_IXGRP 0
+#define S_IXOTH 0
+#define O_NOFOLLOW 0
+#define O_NOATIME 0
+#define O_NOCTTY 0
+#define EDQUOT 0
+#endif
+
 static int _csync_cleanup_cmp(const void *a, const void *b) {
   csync_file_stat_t *st_a, *st_b;
 

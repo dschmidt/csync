@@ -31,6 +31,13 @@
 #ifndef _CSYNC_PRIVATE_H
 #define _CSYNC_PRIVATE_H
 
+#ifndef __unix__
+#define uid_t int
+#define gid_t int
+#define getuid() 0
+#define geteuid() 0
+#endif
+
 #include <stdint.h>
 #include <stdbool.h>
 #include <sqlite3.h>

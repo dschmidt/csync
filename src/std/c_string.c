@@ -28,6 +28,10 @@
 #include "c_alloc.h"
 #include "c_macro.h"
 
+#ifndef __unix__
+#define ENOBUFS 0
+#endif
+
 int c_streq(const char *a, const char *b) {
   register const char *s1 = a;
   register const char *s2 = b;

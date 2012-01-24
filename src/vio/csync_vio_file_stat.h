@@ -27,6 +27,12 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#ifndef __unix__
+#define uid_t int
+#define gid_t int
+#define nlink_t int
+#endif
+
 typedef struct csync_vio_file_stat_s csync_vio_file_stat_t;
 
 enum csync_vio_file_flags_e {

@@ -51,9 +51,13 @@ endif (MEM_NULL_TESTS)
 
 add_subdirectory(src)
 add_subdirectory(modules)
-add_subdirectory(client)
 add_subdirectory(config)
 add_subdirectory(doc)
+
+if(UNIX)
+    add_subdirectory(client)
+endif()
+
 
 find_package(Check)
 if (CHECK_FOUND AND UNIT_TESTING)

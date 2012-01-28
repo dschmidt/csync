@@ -12,3 +12,4 @@
 
 #cmakedefine WITH_LOG4C 1
 #cmakedefine HAVE_LIBRT
+#cmakedefine HAVE_STRERROR_R

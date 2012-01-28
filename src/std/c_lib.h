@@ -29,3 +29,4 @@
 #include "c_rbtree.h"
 #include "c_string.h"
 #include "c_time.h"
+#include "c_strerror_r.h"

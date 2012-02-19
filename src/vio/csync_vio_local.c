@@ -28,7 +28,6 @@
 #include <stdio.h>
 
 #include "c_lib.h"
-#include "c_lstat.h"
 #include "vio/csync_vio_local.h"
 
 

@@ -35,7 +35,6 @@
 
 #define CSYNC_LOG_CATEGORY_NAME "csync.vio.main"
 #include "csync_log.h"
-#include "std/c_lstat.h"
 
 
 int csync_vio_init(CSYNC *ctx, const char *module, const char *args) {

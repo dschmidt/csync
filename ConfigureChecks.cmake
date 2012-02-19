@@ -57,4 +57,6 @@ endif()
 
 check_function_exists(utimes HAVE_UTIMES)
 
+check_function_exists(lstat HAVE_LSTAT)
+
 set(CSYNC_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} CACHE INTERNAL "csync required system libraries")

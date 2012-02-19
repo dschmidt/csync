@@ -22,16 +22,17 @@
 
 #include <errno.h>
 #include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 
 #include "c_file.h"
 #include "c_string.h"
+#include "c_lstat.h"
 
 #ifndef __unix__
 #define ENODATA 0
 #endif
+
 
 /* check if path is a file */
 int c_isfile(const char *path) {

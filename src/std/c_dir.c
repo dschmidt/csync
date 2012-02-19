@@ -2,13 +2,13 @@
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
-#include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
 
 #include "c_macro.h"
 #include "c_alloc.h"
 #include "c_dir.h"
+#include "c_lstat.h"
 
 int c_mkdirs(const char *path, mode_t mode) {
   int tmp;

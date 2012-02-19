@@ -59,4 +59,9 @@ check_function_exists(utimes HAVE_UTIMES)
 
 check_function_exists(lstat HAVE_LSTAT)
 
+check_function_exists(fnmatch HAVE_FNMATCH)
+if(NOT HAVE_FNMATCH AND WIN32)
+  find_library(SHLWAPI_LIBRARY shlwapi)
+endif()
+
 set(CSYNC_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} CACHE INTERNAL "csync required system libraries")

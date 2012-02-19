@@ -21,7 +21,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <fnmatch.h>
 #include <unistd.h>
 
 #include "c_lib.h"

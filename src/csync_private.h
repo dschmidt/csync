@@ -71,7 +71,7 @@
 
 
 /**
- * Add status codes, types and return-values missing on windows
+ * Add status codes, types, functions and return-values missing on windows
  */
 #ifdef _WIN32
 #define ENODATA 0
@@ -90,6 +90,8 @@
 #define nlink_t int
 #define getuid() 0
 #define geteuid() 0
+
+#define strerror_r(errnum, buf, buflen) snprintf(buf, buflen, "%s", strerror(errnum))
 #endif
 
 enum csync_replica_e {

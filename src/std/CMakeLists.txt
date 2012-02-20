@@ -21,6 +21,7 @@ set(cstdlib_SRCS
   c_alloc.c
   c_dir.c
   c_file.c
+  c_fnmatch.c
   c_list.c
   c_path.c
   c_rbtree.c
@@ -34,4 +35,7 @@ include_directories(
 )
 
 add_library(${CSTDLIB_LIBRARY} STATIC ${cstdlib_SRCS})
-#target_link_libraries(${CSTDLIB_LINK_LIBRARIES})
+if(NOT HAVE_FNMATCH AND WIN32)
+  # needed for PathMatchSpec for our fnmatch replacement
+  target_link_libraries(${CSTDLIB_LIBRARY} ${SHLWAPI_LIBRARY})
+endif()

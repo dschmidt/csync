@@ -23,7 +23,6 @@
 #endif
 
 #include <errno.h>
-#include <fnmatch.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>

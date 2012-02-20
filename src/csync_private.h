@@ -94,6 +94,10 @@
 #define strerror_r(errnum, buf, buflen) snprintf(buf, buflen, "%s", strerror(errnum))
 #endif
 
+#ifndef HAVE_LSTAT
+#define lstat stat
+#endif
+
 enum csync_replica_e {
   LOCAL_REPLICA,
   REMOTE_REPLCIA

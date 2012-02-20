@@ -61,6 +61,7 @@ static int _csync_lock_create(const char *lockfile) {
   }
 
   CSYNC_LOG(CSYNC_LOG_PRIORITY_TRACE, "Create temporary lock file: %s", ctmpfile);
+#ifdef __unix__
   if ((fd = mkstemp(ctmpfile)) < 0) {
     CSYNC_LOG(CSYNC_LOG_PRIORITY_ERROR,
         "Unable to create temporary lock file: %s - %s",
@@ -69,12 +70,14 @@ static int _csync_lock_create(const char *lockfile) {
     rc = -1;
     goto out;
   }
+#endif
 
   CSYNC_LOG(CSYNC_LOG_PRIORITY_TRACE, "Write pid (%d) to temporary lock file: %s", pid, ctmpfile);
   pid = asprintf(&buf, "%d\n", pid);
   if (write(fd, buf, pid) == pid) {
     /* Create lock file */
     CSYNC_LOG(CSYNC_LOG_PRIORITY_TRACE, "Create a hardlink from %s to %s.", ctmpfile, lockfile);
+#ifdef __unix__
     if (link(ctmpfile, lockfile) < 0 ) {
       /* Oops, alredy locked */
       CSYNC_LOG(CSYNC_LOG_PRIORITY_INFO,
@@ -84,6 +87,7 @@ static int _csync_lock_create(const char *lockfile) {
       rc = -1;
       goto out;
     }
+#endif
   } else {
     CSYNC_LOG(CSYNC_LOG_PRIORITY_ERROR,
         "Can't create %s - %s",
@@ -138,6 +142,7 @@ static pid_t _csync_lock_read(const char *lockfile) {
      return -1;
   }
 
+#ifdef __unix__
   /* Check if process is still alive */
   if (kill(pid, 0) < 0 && errno == ESRCH) {
      /* Process is dead. Remove stale lock. */
@@ -149,6 +154,7 @@ static pid_t _csync_lock_read(const char *lockfile) {
      }
      return -1;
   }
+#endif
 
   return pid;
 }

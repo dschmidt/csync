@@ -13,4 +13,5 @@
 #cmakedefine WITH_LOG4C 1
 #cmakedefine HAVE_STRERROR_R
 #cmakedefine HAVE_UTIMES
+#cmakedefine HAVE_LSTAT
 #cmakedefine HAVE_FNMATCH

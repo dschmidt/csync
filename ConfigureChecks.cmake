@@ -44,7 +44,7 @@ if(NOT HAVE_ASPRINTF)
     if(MINGW)
         add_definitions( -D__USE_MINGW_ANSI_STDIO=1 )
     endif()
-+endif()
+endif()
 
 check_function_exists(fnmatch HAVE_FNMATCH)
 if(NOT HAVE_FNMATCH AND WIN32)

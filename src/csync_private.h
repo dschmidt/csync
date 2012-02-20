@@ -69,6 +69,29 @@
                            CSYNC_STATUS_RECONCILE | \
                            CSYNC_STATUS_PROPAGATE)
 
+
+/**
+ * Add status codes, types and return-values missing on windows
+ */
+#ifdef _WIN32
+#define ENODATA 0
+#define ENOBUFS 0
+#define S_IRGRP 0
+#define S_IROTH 0
+#define S_IXGRP 0
+#define S_IXOTH 0
+#define O_NOFOLLOW 0
+#define O_NOATIME 0
+#define O_NOCTTY 0
+#define EDQUOT 0
+
+#define uid_t int
+#define gid_t int
+#define nlink_t int
+#define getuid() 0
+#define geteuid() 0
+#endif
+
 enum csync_replica_e {
   LOCAL_REPLICA,
   REMOTE_REPLCIA

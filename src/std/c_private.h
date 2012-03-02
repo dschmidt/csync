@@ -51,6 +51,12 @@
 #define lstat _stat
 #endif
 
+#ifndef HAVE_MKSTEMP
+#ifdef _WIN32
+#define mkstemp(template) _mktemp_s(template, strlen(template));
+#endif
+#endif
+
 #endif //_C_PRIVATE_H
 
 /* vim: set ft=c.doxygen ts=8 sw=2 et cindent: */

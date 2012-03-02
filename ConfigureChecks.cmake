@@ -57,4 +57,6 @@ check_function_exists(utimes HAVE_UTIMES)
 
 check_function_exists(lstat HAVE_LSTAT)
 
+check_function_exists(mkstemp HAVE_MKSTEMP)
+
 set(CSYNC_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} CACHE INTERNAL "csync required system libraries")

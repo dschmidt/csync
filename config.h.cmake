@@ -15,4 +15,5 @@
 #cmakedefine HAVE_UTIMES 1
 #cmakedefine HAVE_LSTAT 1
 #cmakedefine HAVE_FNMATCH 1
+#cmakedefine HAVE_MKSTEMP 1
 
